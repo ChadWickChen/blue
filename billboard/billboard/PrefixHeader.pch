@@ -1,0 +1,65 @@
+//
+//  PrefixHeader.pch
+//  billboard
+//
+//  Created by chen on 2018/6/12.
+//  Copyright © 2018年 chen. All rights reserved.
+//
+#ifdef __OBJC__
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define KScreen ([UIScreen mainScreen].bounds.size)
+#define KScreen_ScreenWidth ([UIScreen mainScreen].bounds.size.width)
+#define KScreen_ScreenHeight ([UIScreen mainScreen].bounds.size.height)
+#define iPhoneX (KScreen_ScreenWidth == 375.f && KScreen_ScreenHeight == 812.f ? YES : NO)
+#define ViewHeaderHeight (iPhoneX ? 88.f : 64.f)
+#define ViewTabbarHeight (iPhoneX ? 83.f : 49.f)
+
+#define ColorWith(r,g,b,a) ([UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a])
+//RGB转UIColor（带alpha值）
+#define UIColorFromRGBWithAlpha(rgbValue,a) [UIColor  colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0  green:((float)((rgbValue & 0xFF00) >> 8))/255.0  blue:((float)(rgbValue & 0xFF))/255.0 alpha:a]
+#define BgColour ([UIColor colorWithRed:237/255.0 green:236/255.0 blue:243/255.0 alpha:1])
+#define lineColour ([UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1])
+#define NameColour (ColorWith(0, 0, 0, 1))
+#define DetailColour (ColorWith(102, 102, 102, 1))
+#define xingqiColour (ColorWith(132, 201, 71, 1))
+#define detailColour (ColorWith(170, 169, 169, 1))
+#define BlueColour (ColorWith(24, 169, 237, 1))
+#define NameFont(a) ([UIFont fontWithName:@".PingFangSC-Regular" size:a])
+//连接超时时间
+#define RequestTimeOut 30
+//弱引用
+#define WeakSelf(type)  __weak typeof(type) weak##type = type;
+
+//app链接
+#define APP_URL @"http://itunes.apple.com/cn/lookup?id=1291236117"
+
+
+#import "UIView+CDExtension.h"
+#import "UIBarButtonItem+CDExtension.h"
+
+#import <SVProgressHUD.h>
+#import <AFNetworking.h>
+#import <MJExtension.h>
+#import <Masonry.h>
+#import <UIImageView+WebCache.h>
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
+#import "WRNavigationBar.h"
+
+//时间转换
+#import "CDTimeDataFormatter.h"
+#import "UserDefaultUtil.h"
+#import "HttpManager.h"
+#import "UIImage+Image.h"
+#import "UIButton+ImageTitleSpacing.h"
+#import "BabyBluetooth.h"
+#import "IQKeyboardManager.h"
+#import "MBProgressHUD.h"
+//存储log
+#import "SSLogger.h"
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */
+#endif
